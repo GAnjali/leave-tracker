@@ -21,6 +21,20 @@ class LeavesController < ApplicationController
     end
   end
 
+  def edit
+    @leave = Leave.find(params[:id])
+  end
+
+  def update
+    @leave = Leave.find(params[:id])
+
+    if @leave.update(leave_params)
+      redirect_to @leave
+    else
+      render :edit
+    end
+  end
+
   private
   def leave_params
     params.require(:leave).permit(:start_date, :end_date)
