@@ -35,6 +35,13 @@ class LeavesController < ApplicationController
     end
   end
 
+  def destroy
+    @leave = Leave.find(params[:id])
+    @leave.destroy
+
+    redirect_to root_path
+  end
+
   private
   def leave_params
     params.require(:leave).permit(:start_date, :end_date)
