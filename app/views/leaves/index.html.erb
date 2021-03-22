@@ -1,0 +1,12 @@
+<h1>Dashboard</h1>
+
+<ul>
+  <% @leaves.each do |leave| %>
+    <li>
+      <a href="/leaves/id" <%= leave.id %>>
+        <%= leave.start_date %>
+        <%= leave.end_date %>
+      </a>
+    </li>
+  <% end %>
+</ul>
