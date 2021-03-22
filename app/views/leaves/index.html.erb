@@ -3,10 +3,8 @@
 <ul>
   <% @leaves.each do |leave| %>
     <li>
-      <a href="/leaves/id" <%= leave.id %>>
-        <%= leave.start_date %>
-        <%= leave.end_date %>
-      </a>
+        <%= link_to leave.start_date, leave %>
+        <%= link_to leave.end_date, leave %>
     </li>
   <% end %>
 </ul>

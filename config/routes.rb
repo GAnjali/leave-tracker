@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   root 'leaves#index'
-  resource :leaves
+
+  resources :leaves
 end
