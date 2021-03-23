@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'leaves#index'
+  root 'pages#home'
 
   resources :leaves
 end

@@ -1,21 +1,27 @@
-<%= form_with model: leave do |form| %>
-  <div>
-    <%= form.label :start_date %><br>
-    <%= form.text_field :start_date %>
-    <% leave.errors.full_messages_for(:start_date).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <%= render 'shared/errors' %>
+      <%= form_with(model: @leave, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+        <div class="form-group row">
+          <%= f.label :start_date, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :start_date, class: "form-control shadow rounded", placeholder: "Start date of leave" %>
+          </div>
+        </div>
 
-  <div>
-    <%= form.label :end_date %><br>
-    <%= form.text_area :end_date %><br>
-    <% leave.errors.full_messages_for(:end_date).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+        <div class="form-group row">
+          <%= f.label :end_date, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_area :end_date, rows: 10, class: "form-control shadow rounded", placeholder: "End date of leave" %>
+          </div>
+        </div>
 
-  <div>
-    <%= form.submit %>
+        <div class="form-group row justify-content-center">
+          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to '[ Cancel and return to leaves listing ]', leaves_path, class: "text-info" %>
   </div>
-<% end %>
+</div>
