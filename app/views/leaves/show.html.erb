@@ -1,26 +1,23 @@
-<div id="page-content">
-  <h2 class="text-center mt-4"><%= @leave.title %></h2>
+<h2 class="text-center mt-4">Leaves of <%=  @leave.user.username %></h2>
 
-
-  <p><strong>Title: </strong><%= @leave.title %></p>	  <div class="container">
-  <p><strong>Description: </strong><%= @leave.description %></p>	    <div class="row justify-content-md-center">
-
-  <div class="col-8 mt-4">
-    <%= link_to 'Edit', edit_leafe_path(@leave) %> |	        <div class="card text-center shadow mb-5 bg-white rounded">
-    <%= link_to 'Delete', leafe_path(@leave), method: :delete, data: { confirm: "Are you sure?" } %> |	          <div class="card-header font-italic">
-    <%= link_to 'Return to leaves listing', leafe_path %>
-  </div>
-    <div class="card-body">
-      <div class="card-text text-left"><%= simple_format(@leave.description) %></div>
-      <%= link_to "Edit", edit_leafe_path(@leave), class: "btn btn-outline-info" %>
-      <%= link_to "Delete", leafe_path(@leave), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header font-italic">
+          by <%= @leave.user.username if @leave.user %>
+        </div>
+        <div class="card-body">
+          <div class="card-text text-left"><%= @leave.start_date %></div>
+          <div class="card-text text-left"><%= @leave.end_date %></div>
+          <%= link_to "Edit", edit_leafe_path(@leave), class: "btn btn-outline-info" %>
+          <%= link_to "Delete", leafe_path(@leave), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(@leave.created_at) %> ago,
+            edited <%= time_ago_in_words(@leave.updated_at) %> ago</small>
+        </div>
+      </div>
     </div>
-    <div class="card-footer text-muted">
-      <small>Created <%= time_ago_in_words(@leave.created_at) %> ago,
-        edited <%= time_ago_in_words(@leave.updated_at) %> ago</small>
-    </div>
   </div>
-  </div>
-</div>
-</div>
 </div>
